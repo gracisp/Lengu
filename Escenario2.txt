@@ -1,0 +1,7 @@
+--- ANÁLISIS DE RENDIMIENTO ---
+Parámetros: n=30, umbral=7500, dificultadPoW=5, maxPrimos=500000
+---------------------------------
+Tiempo Promedio Secuencial:   767.24631ms
+Tiempo Promedio Especulativo: 861.690883ms
+---------------------------------
+Speedup (Secuencial / Especulativo): 0.89
