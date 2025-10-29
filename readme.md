@@ -107,13 +107,12 @@ Para realizar el análisis de rendimiento se realizó la **Ejecución especulati
 ## Gráficas con los resultados obtenidos
 Las gráficas muestran la comparación del rendimiento realizada en los escenarios 1 y 2, cuyos parametros ya fueron definidos previamente, cabe mencionar que todos los parametros se mantuvieron fijos a excepción del umbral.
 
-![Gráfica de Análisis Secuencial y Especulativo](img/Tiempo%20Promedio%20Secuencial%20Vs%20Especulativo.png
-)
+![Gráfica de Análisis Secuencial y Especulativo](img/Tiempo%20Promedio%20Secuencial%20Vs%20Especulativo.png)
 **Comportamiento en ambos escenarios**: En ambos escenarios, el tiempo promedio de ejecución especulativa es mayor que el tiempo de ejecución Secuencial.
 - **Escenario 1 (umbral = 5000)**: La diferencia es notable (709 ms Vs 832 ms), lo que sugiere que el costo de gestión de la concurrencia (lanzar Gorountines y usar `context.Context` para cancelación) domina la ejecución.
 - **Escenario 2 (umbral = 7500)**: La direferencia de tiempo se reduce (767 ms Vs 861 s). Este incremento en el tiempo sugiere que, dado que el tiempo de decisión (`CalcularTrazaDeProductoDeMatrices` con n = 30) es muy bajo, la ejecución especulativa presenta un costo de gestión de la concurrencia que no es compensado por el ahorro de tiempo, resultando en un tiempo total de ejecución más largo.
 
-![Gráfica de Speedup](img/SpeedUp.png)
+![Gráfica de Speedup](img/Speedup.png)
 **Speedup < 1**: La gráfica de Speedup confirma que en niguno de los escenarios se logró una mejora de Velocidad (Speedus > 1).
 - **Escenario 1 (umbral = 5000)**: El Speedup de 0.85 es el valor mas bajo, indicando que el costo de gestión es más pronunciado en este caso, ya que hay una pérdida de rendimiento del 15%.
 
@@ -131,3 +130,4 @@ Las gráficas demuestran que la ejecución especulativa requiere un balance ópt
 - Se evidenció cómo el rendimiento depende del tiempo relativo entre las ramas y la función de decisión.  
 - Aunque en este experimento el **Speedup fue < 1**, el modelo demuestra el potencial de la ejecución especulativa en casos donde la condición sea significativamente costosa.  
 - Se cumplieron los requerimientos de entrada, sincronización, y análisis de rendimiento solicitados en el control.
+
